@@ -15,7 +15,7 @@ router.get("/employees", function (req, res) {
 
 router.post("/employees", function (req, res) {
     employees.insertOne([
-        "first_name", "last_name","email","phone","hire_date","position","ssn","dob","marital","gender","full_time","drivers_liscence","gov_docs"
+        "first_name", "last_name", "email", "phone", "hire_date", "position", "ssn", "dob", "marital", "gender", "full_time", "drivers_liscence", "gov_docs"
     ], [
         req.body.first_name, req.body.last_name, req.body.email, req.body.phone, req.body.hire_date, req.body.position, req.body.ssn, req.body.dob, req.body.marital, req.body.gender, req.body.full_time, req.body.drivers_liscence, req.body.gov_docs
     ], function (result) {
@@ -49,6 +49,16 @@ router.delete("/employees/:id", function (req, res) {
         else {
             res.status(200).end();
         }
+    });
+});
+
+router.get("/employees/", function (req, res) {
+    var cols = req.body.column;
+    var colVal = req.body.colVal;
+
+    employees.findAllWhere(cols, colVal, function (data) {
+        console.log(data);
+        res.json({ employees: data });
     });
 });
 

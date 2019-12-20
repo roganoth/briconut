@@ -73,12 +73,28 @@ var orm = {
             cb(result);
         });
     },
-    delete: function(table, condition, cb) {
+    delete: function (table, condition, cb) {
         var queryString = "DELETE FROM " + table;
         queryString += " WHERE ";
         queryString += condition;
 
-        connection.query(queryString, function(err, result) {
+        connection.query(queryString, function (err, result) {
+            if (err) {
+                throw err;
+            }
+
+            cb(result);
+        });
+    },
+    findAllWhere: function (cols, colVal, table, cb) {
+        var queryString = "SELECT * ";
+        queryString += " FROM ";
+        queryString += table;
+        queryString += " WHERE ";
+        queryString += colVal + " = ";
+        queryString += "'" + cols.toString() + "'";
+
+        connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;
             }

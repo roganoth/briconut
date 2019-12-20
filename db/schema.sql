@@ -3,6 +3,7 @@ use hrApp;
 
 create table employees (
     id int auto_increment not null,
+
     first_name varchar (40) not null,
     last_name varchar (40) not null,
     email varchar (100) not null,
