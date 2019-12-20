@@ -6,7 +6,7 @@ create table employees (
     first_name varchar (12) not null,
     last_name varchar (15) not null,
     email varchar (30) not null,
-    phone int not null,
+    phone varchar (14) not null,
     hire_date date not null,
     position varchar (12) not null,
     ssn int not null,
@@ -14,7 +14,7 @@ create table employees (
     marital boolean,
     gender varchar (8),
     full_time boolean not null,
-    drivers_liscence boolean not null,
+    drivers_liscense boolean not null,
     gov_docs boolean not null,
     primary key (id)
 )
