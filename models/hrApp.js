@@ -16,8 +16,13 @@ var employees = {
             cb(res);
         });
     },
-    delete: function(condition, cb) {
-        orm.delete("employees", condition, function(res) {
+    delete: function (condition, cb) {
+        orm.delete("employees", condition, function (res) {
+            cb(res);
+        });
+    }, 
+    findAllWhere: function (cols, colVal, cb) {
+        orm.findAllWhere("employees", cols, colVal, function (res) {
             cb(res);
         });
     }
