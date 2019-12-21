@@ -13,28 +13,11 @@ $(document).ready(function () {
                 emps[i].last_name + " | " +
                 emps[i].position + " | " +
                 moment(emps[i].hire_date).format('LL') + " | " +
-                "<a href='' target='_blank'id ='email'>" +emps[i].email + " </a>" +" | " +
+                emps[i].email + " | " +
                 "</p></li><hr>"
             );
         };
     });
-
-});
-
-$(document).on("click","#email",function (event) {
-    var email = $("#email")[0].innerHTML
-    
-    console.log(email)
-    
-    $.ajax("/message",{
-        type: "POST"
-    }).then(function (data){  
-        console.log("test")
-    });
-    
-
-});
-
     $(document).on("click", "#search", function (event) {
         event.preventDefault();
         var column = $("#col").val().trim();
@@ -62,4 +45,3 @@ $(document).on("click","#email",function (event) {
         })
     })
 })
-
