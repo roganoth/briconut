@@ -1,4 +1,5 @@
 var connection = require("./connection.js");
+var path = require("path");
 
 function printQuestionMarks(num) {
     var arr = [];
@@ -86,14 +87,14 @@ var orm = {
             cb(result);
         });
     },
-    findAllWhere: function (cols, colVal, table, cb) {
+    findAllWhere: function (table, cols, colVal, cb) {
         var queryString = "SELECT * ";
         queryString += " FROM ";
         queryString += table;
         queryString += " WHERE ";
-        queryString += colVal + " = ";
-        queryString += "'" + cols.toString() + "'";
-
+        queryString += cols + " = ";
+        queryString += "'" + colVal + "'";
+        console.log(queryString);
         connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;
