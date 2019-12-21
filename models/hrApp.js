@@ -1,4 +1,5 @@
 var orm = require("../config/orm.js");
+var path = require("path");
 
 var employees = {
     selectAll: function (cb) {
