@@ -53,6 +53,6 @@ $(document).ready(function () {
     $(document).on("click", "#info", function () {
         console.log("woot");
         $("#infoModal").modal("toggle");
-        $("#modalTitle").append(this.first_name + " " + this.last_name);
+        $("#modalTitle").append(emps);
     });
 })
