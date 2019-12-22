@@ -14,6 +14,7 @@ $(document).ready(function () {
                 emps[i].position + " | " +
                 moment(emps[i].hire_date).format('LL') + " | " +
                 emps[i].email + " | " +
+                "<button id='info'>Get More Info</button>" +
                 "</p></li><hr>"
             );
         };
@@ -41,10 +42,17 @@ $(document).ready(function () {
                         emps[i].position + " | " +
                         moment(emps[i].hire_date).format('LL') + " | " +
                         emps[i].email + " | " +
+                        "<button id='info'>Get More Info</button>" +
                         "</p></li><hr>"
                     );
                 };
+
             });
         }
+    });
+    $(document).on("click", "#info", function () {
+        console.log("woot");
+        $("#infoModal").modal("toggle");
+        $("#modalTitle").append(this.first_name + " " + this.last_name);
     });
 })
