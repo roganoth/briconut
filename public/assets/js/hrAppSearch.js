@@ -18,8 +18,9 @@ $(document).ready(function () {
             );
         };
     });
-    $(document).on("click", "#search", function (event) {
-        event.preventDefault();
+    // $(document).on("click", "#search", function (event) {
+    //     event.preventDefault();
+    $("#search-bar").keyup(function () {
         var column = $("#col").val().trim();
         var colVal = $("#search-bar").val().trim();
         $("#employeeResult").empty();
@@ -41,7 +42,6 @@ $(document).ready(function () {
                     "</p></li><hr>"
                 );
             };
-
-        })
-    })
+        });
+    });
 })
