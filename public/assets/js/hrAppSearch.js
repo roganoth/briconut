@@ -117,6 +117,7 @@ $(document).ready(function () {
     $(document).on("click", ".empInfo", function () {
         console.log("woot");
         $("#infoModal").modal("toggle");
+        $("#modal").empty();
         var marital;
         var docs;
         var dl;
