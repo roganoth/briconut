@@ -6,7 +6,7 @@ var path = require("path")
 var keys = require("../config/keys")
 // var API_KEY = keys.keys.API_KEY;
 // var DOMAIN = keys.keys.DOMAIN;
-// // console.log(API_KEY);
+// console.log(keys);
 var mailgun = require('mailgun-js')({apiKey: keys.keys.API_KEY, domain: keys.keys.DOMAIN});
 
 router.get("/", function (req, res) {
