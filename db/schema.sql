@@ -15,7 +15,7 @@ create table employees (
     marital boolean,
     gender varchar (20),
     full_time boolean not null,
-    drivers_liscense boolean not null,
+    drivers_license boolean not null,
     gov_docs boolean not null,
     primary key (id)
 );

@@ -93,7 +93,7 @@ var orm = {
         queryString += table;
         queryString += " WHERE ";
         queryString += cols + " LIKE ";
-        queryString += "'%" + colVal + "%'";
+        queryString += "'" + colVal + "%'";
         console.log(queryString);
         connection.query(queryString, function (err, result) {
             if (err) {
