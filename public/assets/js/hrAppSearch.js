@@ -10,12 +10,8 @@ $(document).ready(function () {
             //adding data attr to button for modal
             var infoButton = $("<button>");
             infoButton.addClass("empInfo");
-            // infoButton.attr("id","info");
             infoButton.attr("data-first_name", emps[i].first_name);
             infoButton.attr("data-last_name", emps[i].last_name);
-            // infoButton.attr("data-position", emps[i].position);
-            // infoButton.attr();
-            // infoButton.attr();
             infoButton.attr("data-phone", emps[i].phone);
             infoButton.attr("data-dob", moment(emps[i].dob).format('LL'));
             infoButton.attr("data-marital", emps[i].marital);
@@ -24,44 +20,49 @@ $(document).ready(function () {
             infoButton.attr("data-dl", emps[i].drivers_license);
             infoButton.attr("data-ssn", emps[i].ssn);
             infoButton.text("Get More Info");
-            console.log(infoButton);
+
 
             var nameString = $(`<li> ${emps[i].first_name} | ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | <a href = ' ' target="_blank" id = 'email'>${emps[i].email} </a> </li>`);
+
             nameString.append(infoButton);
             emps_elem.append(nameString);
         };
     });
-    // $(document).on("click", "#search", function (event) {
-    //     event.preventDefault();
-    //     var column = $("#col").val().trim();
-    //     var colVal = $("#search-bar").val().trim();
-    //     $("#employeeResult").empty();
-    //     $.ajax("/employees/" + column + "/" + colVal, {
-    //         type: "GET"
-    //     }).then(function (data) {
-    //         var emps = data.employees;
-    //         var len = data.employees.length;
+    $(document).on("click", "#search", function (event) {
+        event.preventDefault();
+        var column = $("#col").val().trim();
+        var colVal = $("#search-bar").val().trim();
+        $("#employeeResult").empty();
+        $.ajax("/employees/" + column + "/" + colVal, {
+            type: "GET"
+        }).then(function (data) {
+            var emps = data.employees;
+            var len = data.employees.length;
 
-    //         var emps_elem = $("#employeeResult");
-    //         for (i = 0; i < len; i++) {
-    //             emps_elem.append(
-    //                 "<li><p>" +
-    //                 emps[i].first_name + " " +
-    //                 emps[i].last_name + " | " +
-    //                 emps[i].position + " | " +
-    //                 moment(emps[i].hire_date).format('LL') + " | " +
-    //                 emps[i].email + " | " +
-    //                 "<button id='info'>Get More Info</button>" +
-    //                 "</p></li><hr>"
-    //             );
-    //         };
+            var emps_elem = $("#employeeResult");
+            for (i = 0; i < len; i++) {
+                //adding data attr to button for modal
+                var infoButton = $("<button>");
+                infoButton.addClass("empInfo");
+                infoButton.attr("data-first_name", emps[i].first_name);
+                infoButton.attr("data-last_name", emps[i].last_name);
+                infoButton.attr("data-phone", emps[i].phone);
+                infoButton.attr("data-dob", moment(emps[i].dob).format('LL'));
+                infoButton.attr("data-marital", emps[i].marital);
+                infoButton.attr("data-gender", emps[i].gender);
+                infoButton.attr("data-gov_docs", emps[i].gov_docs);
+                infoButton.attr("data-dl", emps[i].drivers_license);
+                infoButton.attr("data-ssn", emps[i].ssn);
+                infoButton.text("Get More Info");
 
-    //     });
-    // });
-
+                var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | ${emps[i].email}  </li>`);
+                nameString.append(infoButton);
+                emps_elem.append(nameString);
+            };
+        });
+    });
 
     $("#search-bar").keyup(function (event) {
-        console.log(event.keyCode);
         if (event.keyCode >= 65 && event.keyCode <= 90 || event.keyCode >= 48 && event.keyCode <= 57) {
             var column = $("#col").val().trim();
             var colVal = $("#search-bar").val().trim();
@@ -76,10 +77,6 @@ $(document).ready(function () {
                 for (i = 0; i < len; i++) {
                     //adding data attr to button for modal
                     var infoButton = $("<button>");
-                    // infoButton.attr("id","info");
-                    // infoButton.attr("data-position", emps[i].position);
-                    // infoButton.attr();
-                    // infoButton.attr();
                     infoButton.addClass("empInfo");
                     infoButton.attr("data-first_name", emps[i].first_name);
                     infoButton.attr("data-last_name", emps[i].last_name);
@@ -91,21 +88,8 @@ $(document).ready(function () {
                     infoButton.attr("data-dl", emps[i].drivers_license);
                     infoButton.attr("data-ssn", emps[i].ssn);
                     infoButton.text("Get More Info");
-                    console.log(infoButton);
 
-                    // emps_elem.append(
-                    //     "<li><p>" +
-                    //     emps[i].first_name + " " +
-                    //     emps[i].last_name + " | " +
-                    //     emps[i].position + " | " +
-                    //     moment(emps[i].hire_date).format('LL') + " | " +
-                    //     emps[i].email + " | " +
-                    //     // "<button id='info'>Get More Info</button>" +
-                    //     infoButton +
-                    //     "</p></li><hr>"
-                    // );
-
-                    var nameString = $(`<li> ${emps[i].first_name} | ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | ${emps[i].email}  </li>`);
+                    var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | ${emps[i].email}  </li>`);
                     nameString.append(infoButton);
                     emps_elem.append(nameString);
 
@@ -115,8 +99,8 @@ $(document).ready(function () {
         }
     });
     $(document).on("click", ".empInfo", function () {
-        console.log("woot");
         $("#infoModal").modal("toggle");
+        $("#modal").empty();
         var marital;
         var docs;
         var dl;
@@ -126,7 +110,7 @@ $(document).ready(function () {
         else {
             marital = "Married"
         };
-        if ($(this).attr("data-gov_docs") === 0){
+        if ($(this).attr("data-gov_docs") === 0) {
             docs = "No";
         }
         else {
@@ -139,19 +123,19 @@ $(document).ready(function () {
             dl = "Yes";
         };
         $("#modalTitle").text($(this).attr("data-first_name") + " " + $(this).attr("data-last_name"));
-        $("#modal").append("Phone: " + $(this).attr("data-phone"));
+        $("#modal").append("<b>Phone:</b> " + $(this).attr("data-phone"));
         $("#modal").append("<br>");
-        $("#modal").append("DoB: " + $(this).attr("data-dob"));
+        $("#modal").append("<b>DoB:</b> " + $(this).attr("data-dob"));
         $("#modal").append("<br>");
-        $("#modal").append("Marital Status: " + marital);
+        $("#modal").append("<b>Marital Status:</b> " + marital);
         $("#modal").append("<br>");
-        $("#modal").append("Gender: " + $(this).attr("data-gender"));
+        $("#modal").append("<b>Gender:</b> " + $(this).attr("data-gender"));
         $("#modal").append("<br>");
-        $("#modal").append("Government Docs Submitted: " + docs);
+        $("#modal").append("<b>Government Docs Submitted:</b> " + docs);
         $("#modal").append("<br>");
-        $("#modal").append("Driver's License Submitted: " + dl);
+        $("#modal").append("<b>Driver's License Submitted:</b> " + dl);
         $("#modal").append("<br>");
-        $("#modal").append("SSN: " + $(this).attr("data-ssn"));
+        $("#modal").append("<b>SSN:</b> " + $(this).attr("data-ssn"));
     });
     // $(document).on("click", "#search", function (event) {
     //     event.preventDefault();
