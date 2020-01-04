@@ -14,23 +14,35 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <div class="navbar-brand" href="#">HR Portal</div>
-      </div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="index.html">Home</a></li>
-        <li><a href="search.html">Search</a></li>
-        <li><a href="add.html">Add</a></li>
-      </ul>
-    </div>
-  </nav>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div class="navbar-brand" href="#">HR Portal</div>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="search.html">Search</a></li>
+                <li><a href="add.html">Add</a></li>
+            </ul>
+        </div>
+    </nav>
   <form>
+
 
     <div class="form-group">
       <input class="form-control" id="search-bar">
-      <input class="form-control" id="col">
+      <!-- <input class="form-control" id="col"> -->
+      <label for="col">Search by</label>
+            <select class="custom-select mr-sm-2" id="col">
+                <option selected>Choose...</option>
+                <option value="first_name">First Name</option>
+                <option value="last_name">Last Name</option>
+                <option value="position">Position</option>
+                <option value="hire_date">Hire Date</option>
+                <option value="email">Email</option>
+
+
+            </select>
     </div>
     <button type="submit" class="btn btn-primary" id="search">Search</button>
   </form><br>
@@ -49,7 +61,6 @@
           </button>
         </div>
         <div class="modal-body" id="modal">
-          <p>Modal body text goes here.</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
