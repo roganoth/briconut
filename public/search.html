@@ -29,16 +29,18 @@
     </nav>
   <form>
 
-  <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Regular link</a>
-          <a class="dropdown-item active" href="#">Active link</a>
-          <a class="dropdown-item" href="#">Another link</a>
-  </div>
-
 
     <div class="form-group">
       <input class="form-control" id="search-bar">
-      <input class="form-control" id="col">
+      <!-- <input class="form-control" id="col"> -->
+      <label for="col">Search by</label>
+            <select class="custom-select mr-sm-2" id="col">
+                <option selected>Choose...</option>
+                <option value="first_name">First Name</option>
+                <option value="last_name">Last Name</option>
+
+
+            </select>
     </div>
     <button type="submit" class="btn btn-primary" id="search">Search</button>
   </form><br>
