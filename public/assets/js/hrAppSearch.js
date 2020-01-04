@@ -21,7 +21,9 @@ $(document).ready(function () {
             infoButton.attr("data-ssn", emps[i].ssn);
             infoButton.text("Get More Info");
 
-            var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | ${emps[i].email}  </li>`);
+
+            var nameString = $(`<li> ${emps[i].first_name} | ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | <a href = ' ' target="_blank" id = 'email'>${emps[i].email} </a> </li>`);
+
             nameString.append(infoButton);
             emps_elem.append(nameString);
         };
@@ -135,4 +137,81 @@ $(document).ready(function () {
         $("#modal").append("<br>");
         $("#modal").append("<b>SSN:</b> " + $(this).attr("data-ssn"));
     });
+    // $(document).on("click", "#search", function (event) {
+    //     event.preventDefault();
+    //     var column = $("#col").val().trim();
+    //     var colVal = $("#search-bar").val().trim();
+    //     $("#employeeResult").empty();
+    //     $.ajax("/employees/" + column + "/" + colVal, {
+    //         type: "GET"
+    //     }).then(function (data) {
+    //         var emps = data.employees;
+    //         var len = data.employees.length;
+
+    //         var emps_elem = $("#employeeResult");
+    //         for (i = 0; i < len; i++) {
+    //             emps_elem.append(
+    //                 "<li><p>" +
+    //                 emps[i].first_name + " " +
+    //                 emps[i].last_name + " | " +
+    //                 emps[i].position + " | " +
+    //                 moment(emps[i].hire_date).format('LL') + " | " +
+    //                 emps[i].email + " | " +
+    //                 "<button id='info'>Get More Info</button>" +
+    //                 "</p></li><hr>"
+    //             );
+    //         };
+
+    //     });
+    // });
+
+
+    $("#search-bar").keyup(function (event) {
+        console.log(event.keyCode);
+        if (event.keyCode >= 65 && event.keyCode <= 90 || event.keyCode >= 48 && event.keyCode <= 57) {
+            var column = $("#col").val().trim();
+            var colVal = $("#search-bar").val().trim();
+            $("#employeeResult").empty();
+            $.ajax("/employees/" + column + "/" + colVal, {
+                type: "GET"
+            }).then(function (data) {
+                var emps = data.employees;
+                var len = data.employees.length;
+
+                var emps_elem = $("#employeeResult");
+                for (i = 0; i < len; i++) {
+                    emps_elem.append(
+                        "<li><p>" +
+                        emps[i].first_name + " " +
+                        emps[i].last_name + " | " +
+                        emps[i].position + " | " +
+                        moment(emps[i].hire_date).format('LL') + " | " +
+                        emps[i].email + " | " +
+                        "<button id='info'>Get More Info</button>" +
+                        "</p></li><hr>"
+                    );
+                };
+
+            });
+        }
+    });
+    $(document).on("click", "#info", function () {
+        console.log("woot");
+        $("#infoModal").modal("toggle");
+        $("#modalTitle").append(emps);
+    });
+    
+    $(document).on("click","#email",function (event) {
+        var email = $("#email")[0].innerHTML
+    
+        console.log(email)
+    
+        $.ajax("/message",{
+            type: "POST"
+        }).then(function (data){  
+            console.log("test")
+        });
+    
+    
+    }); 
 })
