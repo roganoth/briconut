@@ -1,12 +1,12 @@
 require("dotenv").config();
 var express = require("express");
 var employees = require("../models/hrApp.js");
-var keys = require("../keys");
+var keys = require("../config/keys.js")
 var router = express.Router();
 var path = require("path");
-var API_KEY = keys.keys.API_KEY;
-var DOMAIN = keys.keys.DOMAIN;
-var mailgun = require('mailgun-js')({apiKey: API_KEY, domain: DOMAIN});
+// var API_KEY = keys.keys.API_KEY;
+// var DOMAIN = keys.keys.DOMAIN;
+var mailgun = require('mailgun-js')({apiKey: keys.keys.API_KEY, domain: keys.keys.DOMAIN});
 
 router.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "public/index.html"));
