@@ -6,7 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+    <script src="./assets/js/hrAppAdd.js"></script>
 </head>
 
 <body>
@@ -39,7 +41,7 @@
 
         <div class="form-group col-md-6">
             <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="inputEmail4">
+            <input type="email" class="form-control" id="inputEmail">
         </div>
 
         <div class="form-group col-md-6">
@@ -78,8 +80,8 @@
             <label for="inputMarital">Marital Status</label>
             <select class="custom-select mr-sm-2" id="inputMarital">
                 <option selected>Choose...</option>
-                <option value="single">Single</option>
-                <option value="married">Married</option>
+                <option value= 0>Single</option>
+                <option value= 1>Married</option>
 
             </select>
         </div>
@@ -100,8 +102,8 @@
             <label for="inputTime">Full-Time</label>
             <select class="custom-select mr-sm-2" id="inputTime">
                 <option selected>Choose...</option>
-                <option value="fulltime">Full-Time</option>
-                <option value="parttime">Part-Time</option>
+                <option value=1>Full-Time</option>
+                <option value=0>Part-Time</option>
 
 
             </select>
@@ -109,10 +111,10 @@
 
         <div class="form-group col-md-3">
             <label for="inputTime">Provided Driver's License</label>
-            <select class="custom-select mr-sm-2" id="inputTime">
+            <select class="custom-select mr-sm-2" id="inputDL">
                 <option selected>Choose...</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
+                <option value=1>Yes</option>
+                <option value=0>No</option>
 
 
             </select>
@@ -120,10 +122,10 @@
 
         <div class="form-group col-md-3">
             <label for="inputTime">Provided I-9 & W-4 Form</label>
-            <select class="custom-select mr-sm-2" id="inputTime">
+            <select class="custom-select mr-sm-2" id="inputDocs">
                 <option selected>Choose...</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
+                <option value=1>Yes</option>
+                <option value=0>No</option>
 
 
             </select>
