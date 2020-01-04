@@ -3,17 +3,15 @@ var express = require("express");
 var employees = require("../models/hrApp.js");
 var router = express.Router();
 var path = require("path")
-var keys = require("../config/keys.js")
-// var API_KEY = keys.API_KEY;
-// var DOMAIN = keys.DOMAIN;
-// console.log(keys.keys.API_KEY);
+var keys = require("../config/keys")
+// var API_KEY = keys.keys.API_KEY;
+// var DOMAIN = keys.keys.DOMAIN;
+// // console.log(API_KEY);
 var mailgun = require('mailgun-js')({apiKey: keys.keys.API_KEY, domain: keys.keys.DOMAIN});
 
 router.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "public/index.html"));
 });
-
-
 
 router.get("/employees", function (req, res) {
     employees.selectAll(function (data) {
