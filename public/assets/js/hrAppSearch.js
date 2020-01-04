@@ -10,6 +10,7 @@ $(document).ready(function () {
             //adding data attr to button for modal
             var infoButton = $("<button>");
             infoButton.addClass("empInfo");
+            infoButton.addClass("btn btn-info btn-sm");
             infoButton.attr("data-first_name", emps[i].first_name);
             infoButton.attr("data-last_name", emps[i].last_name);
             infoButton.attr("data-phone", emps[i].phone);
@@ -21,7 +22,7 @@ $(document).ready(function () {
             infoButton.attr("data-ssn", emps[i].ssn);
             infoButton.text("Get More Info");
 
-            var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | ${emps[i].email}  </li>`);
+            var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | ${emps[i].email}  </li><hr>`);
             nameString.append(infoButton);
             emps_elem.append(nameString);
         };
@@ -42,6 +43,7 @@ $(document).ready(function () {
                 //adding data attr to button for modal
                 var infoButton = $("<button>");
                 infoButton.addClass("empInfo");
+                infoButton.addClass("btn btn-info btn-sm");
                 infoButton.attr("data-first_name", emps[i].first_name);
                 infoButton.attr("data-last_name", emps[i].last_name);
                 infoButton.attr("data-phone", emps[i].phone);
@@ -53,7 +55,7 @@ $(document).ready(function () {
                 infoButton.attr("data-ssn", emps[i].ssn);
                 infoButton.text("Get More Info");
 
-                var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | ${emps[i].email}  </li>`);
+                var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | ${emps[i].email}  </li><hr>`);
                 nameString.append(infoButton);
                 emps_elem.append(nameString);
             };
@@ -76,6 +78,7 @@ $(document).ready(function () {
                     //adding data attr to button for modal
                     var infoButton = $("<button>");
                     infoButton.addClass("empInfo");
+                    infoButton.addClass("btn btn-info btn-sm");
                     infoButton.attr("data-first_name", emps[i].first_name);
                     infoButton.attr("data-last_name", emps[i].last_name);
                     infoButton.attr("data-phone", emps[i].phone);
@@ -87,7 +90,7 @@ $(document).ready(function () {
                     infoButton.attr("data-ssn", emps[i].ssn);
                     infoButton.text("Get More Info");
 
-                    var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | ${emps[i].email}  </li>`);
+                    var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | ${emps[i].email}  </li><hr>`);
                     nameString.append(infoButton);
                     emps_elem.append(nameString);
 
