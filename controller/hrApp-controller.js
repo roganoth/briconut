@@ -13,6 +13,8 @@ router.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
+
+
 router.get("/employees", function (req, res) {
     employees.selectAll(function (data) {
         res.json({ employees: data });
