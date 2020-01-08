@@ -30,15 +30,16 @@ $(document).ready(function () {
             editButton.attr("data-first_name", emps[i].first_name);
             editButton.attr("data-last_name", emps[i].last_name);
             editButton.attr("data-phone", emps[i].phone);
-            editButton.attr("data-dob", moment(emps[i].dob).format('LL'));
+            editButton.attr("data-dob", emps[i].dob);
             editButton.attr("data-marital", emps[i].marital);
             editButton.attr("data-gender", emps[i].gender);
             editButton.attr("data-gov_docs", emps[i].gov_docs);
             editButton.attr("data-dl", emps[i].drivers_license);
             editButton.attr("data-ssn", emps[i].ssn);
-            editButton.attr("data-hire_date", moment(emps[i].hire_date).format('LL'));
+            editButton.attr("data-hire_date", emps[i].hire_date);
             editButton.attr("data-email", emps[i].email);
             editButton.attr("data-position", emps[i].position);
+            editButton.attr("data-time", emps[i].full_time);
             editButton.text("Edit");
 
             //create delete button attach id
@@ -149,11 +150,30 @@ $(document).ready(function () {
         $("#modal").append("<b>SSN:</b> " + $(this).attr("data-ssn"));
     });
 
-    $(document).on("click", ".editInfo", function(){
+    $(document).on("click", ".editInfo", function () {
         $("#editModal").modal("toggle");
         var name = $(this).attr("data-first_name") + " " + $(this).attr("data-last_name");
+        var gender = $(this).attr("data-gender");
+        var marital = $(this).attr("data-marital");
+        var time = $(this).attr("data-time");
+        var dl = $(this).attr("data-dl");
+        var docs = $(this).attr("data-gov_docs");
         $("#editTitle").append(name);
         $("#editBody").empty();
+        $("#inputFirstName").attr("value", $(this).attr("data-first_name"));
+        $("#inputLastName").attr("value", $(this).attr("data-last_name"));
+        $("#inputdob").attr("value", $(this).attr("data-dob"));
+        $("#inputEmail").attr("value", $(this).attr("data-email"));
+        $("#inputPhone").attr("value", $(this).attr("data-phone"));
+        $("#hire_date").attr("value", $(this).attr("data-hire_date"));
+        $("#inputposition").attr("value", $(this).attr("data-position"));
+        $("#inputssn").attr("value", $(this).attr("data-ssn"));
+        $("#inputdob").attr("value", $(this).attr("data-dop"));
+        $('select').val(gender);
+        $('select').val(marital);
+        $('select').val(time);
+        $('select').val(dl);
+        $('select').val(docs);
     });
 
     $(document).on("click", "#email", function (event) {
