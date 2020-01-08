@@ -73,6 +73,7 @@ router.delete("/employees/:id", function (req, res) {
         }
         else {
             res.status(200).end();
+            console.log("Employee " + condition + " was deleted.")
         }
     });
 });

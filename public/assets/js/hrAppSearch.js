@@ -11,6 +11,7 @@ $(document).ready(function () {
             var infoButton = $("<button>");
             infoButton.addClass("empInfo");
             infoButton.addClass("btn btn-info btn-sm");
+            infoButton.attr("data-id", emps[i].id);
             infoButton.attr("data-first_name", emps[i].first_name);
             infoButton.attr("data-last_name", emps[i].last_name);
             infoButton.attr("data-phone", emps[i].phone);
@@ -22,13 +23,42 @@ $(document).ready(function () {
             infoButton.attr("data-ssn", emps[i].ssn);
             infoButton.text("Get More Info");
 
+            //create delete button attach id
+            var delButton = $("<button>");
+            delButton.addClass(".del");
+            delButton.addClass("btn btn-info btn-sm");
+            delButton.attr("data-id", emps[i].id);
+            delButton.attr("data-first_name", emps[i].first_name);
+            delButton.attr("data-last_name", emps[i].last_name);
+            delButton.attr("id", "delete");
+            delButton.text("Delete Employee");
+
 
             var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | <a href = ' ' target="_blank" id = 'email'>${emps[i].email} </a> </li><hr>`);
 
             nameString.append(infoButton);
+            nameString.append(delButton);
             emps_elem.append(nameString);
         };
     });
+
+    //del button ajax call
+    $(document).on("click", "#delete", function (event) {
+        event.preventDefault();
+        var id = $(this).attr("data-id");
+        var name = $(this).attr("data-first_name") + " " + $(this).attr("data-last_name");
+        $("#delWarning").modal("toggle");
+        $("#warningBody").empty();
+        $("#warningBody").append("You will be permanently deleting user: " + name);
+        $("#delConfirm").click(function () {
+            $.ajax("/employees/" + id, {
+                type: "DELETE"
+            }).then(function (data) {
+                location.reload();
+            });
+        });
+    });
+
     $(document).on("click", "#search", function (event) {
         event.preventDefault();
         var column = $("#col").val().trim();
@@ -46,6 +76,7 @@ $(document).ready(function () {
                 var infoButton = $("<button>");
                 infoButton.addClass("empInfo");
                 infoButton.addClass("btn btn-info btn-sm");
+                infoButton.attr("data-id", emps[i].id);
                 infoButton.attr("data-first_name", emps[i].first_name);
                 infoButton.attr("data-last_name", emps[i].last_name);
                 infoButton.attr("data-phone", emps[i].phone);
@@ -57,8 +88,21 @@ $(document).ready(function () {
                 infoButton.attr("data-ssn", emps[i].ssn);
                 infoButton.text("Get More Info");
 
+                //create delete button attach id
+                var delButton = $("<button>");
+                delButton.addClass(".del");
+                delButton.addClass("btn btn-info btn-sm");
+                delButton.attr("data-id", emps[i].id);
+                delButton.attr("data-first_name", emps[i].first_name);
+                delButton.attr("data-last_name", emps[i].last_name);  
+                delButton.attr("id", "delete");
+                delButton.text("Delete Employee");
+
+
                 var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | <a href = ' ' target="_blank" id = 'email'>${emps[i].email} </a> </li><hr>`);
+
                 nameString.append(infoButton);
+                nameString.append(delButton);
                 emps_elem.append(nameString);
             };
         });
@@ -81,6 +125,7 @@ $(document).ready(function () {
                     var infoButton = $("<button>");
                     infoButton.addClass("empInfo");
                     infoButton.addClass("btn btn-info btn-sm");
+                    infoButton.attr("data-id", emps[i].id);
                     infoButton.attr("data-first_name", emps[i].first_name);
                     infoButton.attr("data-last_name", emps[i].last_name);
                     infoButton.attr("data-phone", emps[i].phone);
@@ -92,8 +137,21 @@ $(document).ready(function () {
                     infoButton.attr("data-ssn", emps[i].ssn);
                     infoButton.text("Get More Info");
 
+                    //create delete button attach id
+                    var delButton = $("<button>");
+                    delButton.addClass(".del");
+                    delButton.addClass("btn btn-info btn-sm");
+                    delButton.attr("data-id", emps[i].id);
+                    delButton.attr("data-first_name", emps[i].first_name);
+                    delButton.attr("data-last_name", emps[i].last_name);        
+                    delButton.attr("id", "delete");
+                    delButton.text("Delete Employee");
+
+
                     var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | <a href = ' ' target="_blank" id = 'email'>${emps[i].email} </a>  </li><hr>`);
+
                     nameString.append(infoButton);
+                    nameString.append(delButton);
                     emps_elem.append(nameString);
 
                 };
@@ -101,6 +159,7 @@ $(document).ready(function () {
             });
         }
     });
+
     $(document).on("click", ".empInfo", function () {
         $("#infoModal").modal("toggle");
         $("#modal").empty();
@@ -140,18 +199,18 @@ $(document).ready(function () {
         $("#modal").append("<br>");
         $("#modal").append("<b>SSN:</b> " + $(this).attr("data-ssn"));
     });
-    
-    $(document).on("click","#email",function (event) {
+
+    $(document).on("click", "#email", function (event) {
         var email = $("#email")[0].innerHTML
-    
+
         console.log(email)
-    
-        $.ajax("/message",{
+
+        $.ajax("/message", {
             type: "POST"
-        }).then(function (data){  
+        }).then(function (data) {
             console.log("test")
         });
-    
-    
-    }); 
+
+
+    });
 })
