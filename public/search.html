@@ -9,7 +9,7 @@
   <link rel="reset" href="assets/css/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="http://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="./assets/js/moment.js"></script>
   <script src="./assets/js/hrAppSearch.js"></script>
@@ -92,6 +92,132 @@
     </div>
   </div>
 
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editTitle">You are editing employee: </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="editBody">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputFirstName">First Name</label>
+                <input type="firstName" class="form-control" id="inputFirstName">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputLastName">Last Name</label>
+                <input type="lastName" class="form-control" id="inputLastName">
+              </div>
+            </div>
+        </div>
+        <div class="form-group">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Email</label>
+          <input type="email" class="form-control" id="inputEmail">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="inputPhone">Phone</label>
+          <input type="phone" class="form-control" id="inputPhone">
+        </div>
+
+
+
+        <div class="form-group col-md-6">
+          <label for="inputHireDate">Hire Date (YYYY/MM/DD) </label>
+          <input type="hire_date" class="form-control" id="hire_date">
+        </div>
+
+
+        <div class="form-group col-md-6">
+          <label for="inputPosition">Position</label>
+          <input type="position" class="form-control" id="inputposition">
+        </div>
+
+
+        <div class="form-group col-md-6">
+          <label for="inputssn">Social Security Number</label>
+          <input type="ssn" class="form-control" id="inputssn">
+        </div>
+
+
+        <div class="form-group col-md-6">
+          <label for="inputdob">Date of Birth (YYYY/MM/DD)</label>
+          <input type="dob" class="form-control" id="inputdob">
+        </div>
+
+
+
+        <div class="form-group col-md-2">
+          <label for="inputMarital">Marital Status</label>
+          <select class="custom-select mr-sm-2" id="inputMarital">
+            <option selected>Choose...</option>
+            <option value=0>Single</option>
+            <option value=1>Married</option>
+
+          </select>
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="inputGender">Gender</label>
+          <select class="custom-select mr-sm-2" id="inputGender">
+            <option selected>Choose...</option>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+            <option value="Not Answered">Prefer not to Answer</option>
+
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group col-md-2">
+        <label for="inputTime">Full-Time</label>
+        <select class="custom-select mr-sm-2" id="inputTime">
+          <option selected>Choose...</option>
+          <option value=1>Full-Time</option>
+          <option value=0>Part-Time</option>
+
+
+        </select>
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="inputTime">Provided Driver's License</label>
+        <select class="custom-select mr-sm-2" id="inputDL">
+          <option selected>Choose...</option>
+          <option value=1>Yes</option>
+          <option value=0>No</option>
+
+
+        </select>
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="inputTime">Provided I-9 & W-4 Form</label>
+        <select class="custom-select mr-sm-2" id="inputDocs">
+          <option selected>Choose...</option>
+          <option value=1>Yes</option>
+          <option value=0>No</option>
+
+
+        </select>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+  </div>
+  </div>
 
 </body>
 

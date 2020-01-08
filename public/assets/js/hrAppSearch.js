@@ -1,7 +1,6 @@
 $(document).ready(function () {
-    $.ajax("/employees", {
-        type: "GET"
-    }).then(function (data) {
+
+    function populateResults(data) {
         var emps = data.employees;
         var len = data.employees.length;
 
@@ -23,6 +22,25 @@ $(document).ready(function () {
             infoButton.attr("data-ssn", emps[i].ssn);
             infoButton.text("Get More Info");
 
+            //creates edit button attaches all data
+            var editButton = $("<button>");
+            editButton.addClass("editInfo");
+            editButton.addClass("btn btn-info btn-sm");
+            editButton.attr("data-id", emps[i].id);
+            editButton.attr("data-first_name", emps[i].first_name);
+            editButton.attr("data-last_name", emps[i].last_name);
+            editButton.attr("data-phone", emps[i].phone);
+            editButton.attr("data-dob", moment(emps[i].dob).format('LL'));
+            editButton.attr("data-marital", emps[i].marital);
+            editButton.attr("data-gender", emps[i].gender);
+            editButton.attr("data-gov_docs", emps[i].gov_docs);
+            editButton.attr("data-dl", emps[i].drivers_license);
+            editButton.attr("data-ssn", emps[i].ssn);
+            editButton.attr("data-hire_date", moment(emps[i].hire_date).format('LL'));
+            editButton.attr("data-email", emps[i].email);
+            editButton.attr("data-position", emps[i].position);
+            editButton.text("Edit");
+
             //create delete button attach id
             var delButton = $("<button>");
             delButton.addClass(".del");
@@ -37,9 +55,16 @@ $(document).ready(function () {
             var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | <a href = ' ' target="_blank" id = 'email'>${emps[i].email} </a> </li><hr>`);
 
             nameString.append(infoButton);
+            nameString.append(editButton);
             nameString.append(delButton);
             emps_elem.append(nameString);
         };
+    };
+
+    $.ajax("/employees", {
+        type: "GET"
+    }).then(function (data) {
+        populateResults(data);
     });
 
     //del button ajax call
@@ -67,44 +92,7 @@ $(document).ready(function () {
         $.ajax("/employees/" + column + "/" + colVal, {
             type: "GET"
         }).then(function (data) {
-            var emps = data.employees;
-            var len = data.employees.length;
-
-            var emps_elem = $("#employeeResult");
-            for (i = 0; i < len; i++) {
-                //adding data attr to button for modal
-                var infoButton = $("<button>");
-                infoButton.addClass("empInfo");
-                infoButton.addClass("btn btn-info btn-sm");
-                infoButton.attr("data-id", emps[i].id);
-                infoButton.attr("data-first_name", emps[i].first_name);
-                infoButton.attr("data-last_name", emps[i].last_name);
-                infoButton.attr("data-phone", emps[i].phone);
-                infoButton.attr("data-dob", moment(emps[i].dob).format('LL'));
-                infoButton.attr("data-marital", emps[i].marital);
-                infoButton.attr("data-gender", emps[i].gender);
-                infoButton.attr("data-gov_docs", emps[i].gov_docs);
-                infoButton.attr("data-dl", emps[i].drivers_license);
-                infoButton.attr("data-ssn", emps[i].ssn);
-                infoButton.text("Get More Info");
-
-                //create delete button attach id
-                var delButton = $("<button>");
-                delButton.addClass(".del");
-                delButton.addClass("btn btn-info btn-sm");
-                delButton.attr("data-id", emps[i].id);
-                delButton.attr("data-first_name", emps[i].first_name);
-                delButton.attr("data-last_name", emps[i].last_name);  
-                delButton.attr("id", "delete");
-                delButton.text("Delete Employee");
-
-
-                var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | <a href = ' ' target="_blank" id = 'email'>${emps[i].email} </a> </li><hr>`);
-
-                nameString.append(infoButton);
-                nameString.append(delButton);
-                emps_elem.append(nameString);
-            };
+            populateResults(data);
         });
     });
 
@@ -116,48 +104,9 @@ $(document).ready(function () {
             $.ajax("/employees/" + column + "/" + colVal, {
                 type: "GET"
             }).then(function (data) {
-                var emps = data.employees;
-                var len = data.employees.length;
-
-                var emps_elem = $("#employeeResult");
-                for (i = 0; i < len; i++) {
-                    //adding data attr to button for modal
-                    var infoButton = $("<button>");
-                    infoButton.addClass("empInfo");
-                    infoButton.addClass("btn btn-info btn-sm");
-                    infoButton.attr("data-id", emps[i].id);
-                    infoButton.attr("data-first_name", emps[i].first_name);
-                    infoButton.attr("data-last_name", emps[i].last_name);
-                    infoButton.attr("data-phone", emps[i].phone);
-                    infoButton.attr("data-dob", moment(emps[i].dob).format('LL'));
-                    infoButton.attr("data-marital", emps[i].marital);
-                    infoButton.attr("data-gender", emps[i].gender);
-                    infoButton.attr("data-gov_docs", emps[i].gov_docs);
-                    infoButton.attr("data-dl", emps[i].drivers_license);
-                    infoButton.attr("data-ssn", emps[i].ssn);
-                    infoButton.text("Get More Info");
-
-                    //create delete button attach id
-                    var delButton = $("<button>");
-                    delButton.addClass(".del");
-                    delButton.addClass("btn btn-info btn-sm");
-                    delButton.attr("data-id", emps[i].id);
-                    delButton.attr("data-first_name", emps[i].first_name);
-                    delButton.attr("data-last_name", emps[i].last_name);        
-                    delButton.attr("id", "delete");
-                    delButton.text("Delete Employee");
-
-
-                    var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | <a href = ' ' target="_blank" id = 'email'>${emps[i].email} </a>  </li><hr>`);
-
-                    nameString.append(infoButton);
-                    nameString.append(delButton);
-                    emps_elem.append(nameString);
-
-                };
-
+                populateResults(data);
             });
-        }
+        };
     });
 
     $(document).on("click", ".empInfo", function () {
@@ -198,6 +147,13 @@ $(document).ready(function () {
         $("#modal").append("<b>Driver's License Submitted:</b> " + dl);
         $("#modal").append("<br>");
         $("#modal").append("<b>SSN:</b> " + $(this).attr("data-ssn"));
+    });
+
+    $(document).on("click", ".editInfo", function(){
+        $("#editModal").modal("toggle");
+        var name = $(this).attr("data-first_name") + " " + $(this).attr("data-last_name");
+        $("#editTitle").append(name);
+        $("#editBody").empty();
     });
 
     $(document).on("click", "#email", function (event) {
