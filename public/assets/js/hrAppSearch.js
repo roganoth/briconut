@@ -174,13 +174,30 @@ $(document).ready(function () {
         $('select').val(time);
         $('select').val(dl);
         $('select').val(docs);
+        console.log("#inputFirstName").val().trim();
         $("#edit").click(function () {
-            var newEmployee = {
-                first_name: $("#inputFirstName").val().trim(), last_name: $("#inputLastName").val().trim(), email: $("#inputEmail").val().trim(), phone: $("#inputPhone").val().trim(), hire_date: $("#hire_date").val().trim(), position: $("#inputposition").val().trim(), ssn: $("#inputssn").val().trim(), dob: $("#inputdob").val().trim(), marital: $("#inputMarital").val(), gender: $("#inputGender").val(), full_time: $("#inputTime").val(), drivers_license: $("#inputDL").val(), gov_docs: $("#inputDocs").val()
+            console.log("here");
+            var updateEmployee = {
+                first_name: $("#inputFirstName").val().trim(),
+                last_name: $("#inputLastName").val().trim(),
+                email: $("#inputEmail").val().trim(),
+                phone: $("#inputPhone").val().trim(),
+                hire_date: $("#hire_date").val().trim(),
+                position: $("#inputposition").val().trim(),
+                ssn: $("#inputssn").val().trim(),
+                dob: $("#inputdob").val().trim(),
+                marital: $("#inputMarital").val(),
+                gender: $("#inputGender").val(),
+                full_time: $("#inputTime").val(),
+                drivers_license: $("#inputDL").val(),
+                gov_docs: $("#inputDocs").val()
             }
-            $.ajax("/employees", {
+            console.log(updateEmployee);
+            var id = $(this).attr("data-id");
+            console.log(id);
+            $.ajax("/employees/" + id, {
                 type: "PUT",
-                data: JSON.stringify(newEmployee),
+                data: JSON.stringify(updateEmployee),
                 dataType: "json",
                 contentType: "application/json"
             }).then(function () {
