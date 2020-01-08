@@ -12,6 +12,6 @@ $(document).ready(function () {
         }).then(function(){
             console.log("employee added");
             location.reload();
-        })
-    })
-})
+        });
+    });
+});
