@@ -97,128 +97,65 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="editTitle">You are editing employee: </h5>
+          <h5 class="modal-title" id="editTitle"></h5>
+          <hr>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div>
-        <div class="modal-body" id="editBody">
-          <form>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputFirstName">First Name</label>
-                <input type="firstName" class="form-control" id="inputFirstName">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputLastName">Last Name</label>
-                <input type="lastName" class="form-control" id="inputLastName">
-              </div>
-            </div>
-        </div>
-        <div class="form-group">
-        </div>
-
-        <div class="form-group col-md-6">
-          <label for="inputEmail4">Email</label>
-          <input type="email" class="form-control" id="inputEmail">
-        </div>
-
-        <div class="form-group col-md-6">
-          <label for="inputPhone">Phone</label>
-          <input type="phone" class="form-control" id="inputPhone">
-        </div>
-
-
-
-        <div class="form-group col-md-6">
-          <label for="inputHireDate">Hire Date (YYYY/MM/DD) </label>
-          <input type="hire_date" class="form-control" id="hire_date">
-        </div>
-
-
-        <div class="form-group col-md-6">
-          <label for="inputPosition">Position</label>
-          <input type="position" class="form-control" id="inputposition">
-        </div>
-
-
-        <div class="form-group col-md-6">
-          <label for="inputssn">Social Security Number</label>
-          <input type="ssn" class="form-control" id="inputssn">
-        </div>
-
-
-        <div class="form-group col-md-6">
-          <label for="inputdob">Date of Birth (YYYY/MM/DD)</label>
-          <input type="dob" class="form-control" id="inputdob">
-        </div>
-
-
-
-        <div class="form-group col-md-2">
-          <label for="inputMarital">Marital Status</label>
-          <select class="custom-select mr-sm-2" id="inputMarital">
-            <option selected>Choose...</option>
-            <option value=0>Single</option>
-            <option value=1>Married</option>
-
-          </select>
-        </div>
-
-        <div class="form-group col-md-2">
-          <label for="inputGender">Gender</label>
-          <select class="custom-select mr-sm-2" id="inputGender">
-            <option selected>Choose...</option>
-            <option value="Female">Female</option>
-            <option value="Male">Male</option>
-            <option value="Other">Other</option>
-            <option value="Prefer not to Answer">Prefer not to Answer</option>
-
-          </select>
+          <!-- <div class="modal-body" id="editBody"> -->
+            <form>
+              <label>First Name</label>
+              <input type="text" id="inputFirstName"><br>
+              <label>Last Name</label>
+              <input type="text" id="inputLastName"><br>
+              <label>E-mail</label>
+              <input type="text" id="inputEmail"><br>
+              <label>DoB</label>
+              <input type="text" id="inputdob"><br>
+              <label>Phone</label>
+              <input type="text" id="inputPhone"><br>
+              <label>Hire Date</label>
+              <input type="text" id="hire_date"><br>
+              <label>Position</label>
+              <input type="text" id="inputposition"><br>
+              <label>SSN</label>
+              <input type="text" id="inputssn"><br>
+              <select>
+                <option selected>Choose...</option>
+                <option value=0>Single</option>
+                <option value=1>Married</option>
+              </select>
+              <select id="gender">
+                <option selected>Choose...</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Other">Other</option>
+                <option value="Prefer not to Answer">Prefer not to Answer</option>
+              </select>
+              <select>
+                <option selected>Choose...</option>
+                <option value=1>Full-Time</option>
+                <option value=0>Part-Time</option>
+              </select>
+              <select>
+                <option selected>Choose...</option>
+                <option value=1>Yes</option>
+                <option value=0>No</option>
+              </select>
+              <select>
+                <option selected>Choose...</option>
+                <option value=1>Yes</option>
+                <option value=0>No</option>
+              </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="edit">Save changes</button>
+          </div>
+          </form>
         </div>
       </div>
-
-      <div class="form-group col-md-2">
-        <label for="inputTime">Full-Time</label>
-        <select class="custom-select mr-sm-2" id="inputTime">
-          <option selected>Choose...</option>
-          <option value=1>Full-Time</option>
-          <option value=0>Part-Time</option>
-
-
-        </select>
-      </div>
-
-      <div class="form-group col-md-3">
-        <label for="inputTime">Provided Driver's License</label>
-        <select class="custom-select mr-sm-2" id="inputDL">
-          <option selected>Choose...</option>
-          <option value=1>Yes</option>
-          <option value=0>No</option>
-
-
-        </select>
-      </div>
-
-      <div class="form-group col-md-3">
-        <label for="inputTime">Provided I-9 & W-4 Form</label>
-        <select class="custom-select mr-sm-2" id="inputDocs">
-          <option selected>Choose...</option>
-          <option value=1>Yes</option>
-          <option value=0>No</option>
-
-
-        </select>
-      </div>
-
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary" id="edit">Save changes</button>
-    </div>
-  </div>
-  </div>
-  </div>
 
 </body>
 

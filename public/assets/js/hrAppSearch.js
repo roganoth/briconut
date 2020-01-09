@@ -153,13 +153,15 @@ $(document).ready(function () {
     $(document).on("click", ".editInfo", function () {
         $("#editModal").modal("toggle");
         var name = $(this).attr("data-first_name") + " " + $(this).attr("data-last_name");
-        var gender = $(this).attr("data-gender");
-        var marital = $(this).attr("data-marital");
-        var time = $(this).attr("data-time");
-        var dl = $(this).attr("data-dl");
-        var docs = $(this).attr("data-gov_docs");
-        $("#editTitle").append(name);
-        $("#editBody").empty();
+        var genderEdit = $(this).attr("data-gender");
+        console.log(genderEdit);
+        var maritalEdit = $(this).attr("data-marital");
+        var timeEdit = $(this).attr("data-time");
+        var dlEdit = $(this).attr("data-dl");
+        var docsEdit = $(this).attr("data-gov_docs");
+        var id = $(this).attr("data-id");
+        $("#editTitle").empty();
+        $("#editTitle").append("You are editing employee: " + name);
         $("#inputFirstName").attr("value", $(this).attr("data-first_name"));
         $("#inputLastName").attr("value", $(this).attr("data-last_name"));
         $("#inputdob").attr("value", $(this).attr("data-dob"));
@@ -168,15 +170,14 @@ $(document).ready(function () {
         $("#hire_date").attr("value", $(this).attr("data-hire_date"));
         $("#inputposition").attr("value", $(this).attr("data-position"));
         $("#inputssn").attr("value", $(this).attr("data-ssn"));
-        $("#inputdob").attr("value", $(this).attr("data-dop"));
-        $('select').val(gender);
-        $('select').val(marital);
-        $('select').val(time);
-        $('select').val(dl);
-        $('select').val(docs);
-        console.log("#inputFirstName").val().trim();
+        $("#inputdob").attr("value", $(this).attr("data-dob"));
+        // $('select').val(genderEdit);
+        $("#gender").attr("value", genderEdit);
+        $('select').val(maritalEdit);
+        $('select').val(timeEdit);
+        $('select').val(dlEdit);
+        $('select').val(docsEdit);
         $("#edit").click(function () {
-            console.log("here");
             var updateEmployee = {
                 first_name: $("#inputFirstName").val().trim(),
                 last_name: $("#inputLastName").val().trim(),
@@ -193,17 +194,16 @@ $(document).ready(function () {
                 gov_docs: $("#inputDocs").val()
             }
             console.log(updateEmployee);
-            var id = $(this).attr("data-id");
             console.log(id);
-            $.ajax("/employees/" + id, {
-                type: "PUT",
-                data: JSON.stringify(updateEmployee),
-                dataType: "json",
-                contentType: "application/json"
-            }).then(function () {
-                console.log("employee updated");
-                location.reload();
-            });
+            // $.ajax("/employees/" + id, {
+            //     type: "PUT",
+            //     data: JSON.stringify(updateEmployee),
+            //     dataType: "json",
+            //     contentType: "application/json"
+            // }).then(function () {
+            //     console.log("employee updated");
+            //     location.reload();
+            // });
         });
     });
 
