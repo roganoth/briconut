@@ -122,13 +122,13 @@ $(document).ready(function () {
         else {
             marital = "Married"
         };
-        if ($(this).attr("data-gov_docs") === 0) {
+        if ($(this).attr("data-gov_docs") == 0) {
             docs = "No";
         }
         else {
             docs = "Yes";
         };
-        if ($(this).attr("data-dl") === 0) {
+        if ($(this).attr("data-dl") == 0) {
             dl = "No";
         }
         else {
