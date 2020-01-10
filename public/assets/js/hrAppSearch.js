@@ -160,35 +160,18 @@ $(document).ready(function () {
         var dlEdit = $(this).attr("data-dl");
         var docsEdit = $(this).attr("data-gov_docs");
         var id = $(this).attr("data-id");
+        var hire_date = $(this).attr("data-hire_date");
+        var dob = $(this).attr("data-dob");
         $("#editTitle").empty();
         $("#editTitle").append("You are editing employee: " + name);
         $("#inputFirstName").attr("value", $(this).attr("data-first_name"));
         $("#inputLastName").attr("value", $(this).attr("data-last_name"));
-        $("#inputdob").attr("value", $(this).attr("data-dob"));
         $("#inputEmail").attr("value", $(this).attr("data-email"));
         $("#inputPhone").attr("value", $(this).attr("data-phone"));
-        $("#hire_date").attr("value", $(this).attr("data-hire_date"));
+        $("#hire_date").attr("value", hire_date.slice(0,10));
         $("#inputposition").attr("value", $(this).attr("data-position"));
         $("#inputssn").attr("value", $(this).attr("data-ssn"));
-        $("#inputdob").attr("value", $(this).attr("data-dob"));
-        // $('select').val(genderEdit);
-        // var genderVal;
-
-        // switch (genderEdit) {
-        //     case "1":
-        //         genderVal = "Female"
-        //         break;
-        //     case "2":
-        //         genderVal = "Male"
-        //         break;
-        //     case "3":
-        //         genderVal = "Other"
-        //         break;
-        //     case "4":
-        //         genderVal = "Prefer not to Answer"
-        //         break;
-        // };
-
+        $("#inputdob").attr("value", dob.slice(0,10));
         let genderVal = document.getElementById("inputGender");
         genderVal.value = genderEdit;
 
@@ -204,14 +187,7 @@ $(document).ready(function () {
         let docsVal = document.getElementById("inputDocs");
         docsVal.value = docsEdit;
 
-        // $("[name=gender]").value = genderEdit
-        // $("select").val("Male");
-        // $('select').val(maritalEdit);
-        // $('select').val(timeEdit);
-        // $('select').val(dlEdit);s
-        // $('select').val(docsEdit);
         $("#edit").click(function () {
-            // console.log($("[name=gender]").val())
             var updateEmployee = {
                 first_name: $("#inputFirstName").val().trim(),
                 last_name: $("#inputLastName").val().trim(),
@@ -229,15 +205,15 @@ $(document).ready(function () {
             }
             console.log(updateEmployee);
             console.log(id);
-            // $.ajax("/employees/" + id, {
-            //     type: "PUT",
-            //     data: JSON.stringify(updateEmployee),
-            //     dataType: "json",
-            //     contentType: "application/json"
-            // }).then(function () {
-            //     console.log("employee updated");
-            //     location.reload();
-            // });
+            $.ajax("/employees/" + id, {
+                type: "PUT",
+                data: JSON.stringify(updateEmployee),
+                dataType: "json",
+                contentType: "application/json"
+            }).then(function () {
+                console.log("employee updated");
+                location.reload();
+            });
         });
     });
 
