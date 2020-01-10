@@ -172,12 +172,46 @@ $(document).ready(function () {
         $("#inputssn").attr("value", $(this).attr("data-ssn"));
         $("#inputdob").attr("value", $(this).attr("data-dob"));
         // $('select').val(genderEdit);
-        $("#gender").attr("value", genderEdit);
-        $('select').val(maritalEdit);
-        $('select').val(timeEdit);
-        $('select').val(dlEdit);
-        $('select').val(docsEdit);
+        // var genderVal;
+
+        // switch (genderEdit) {
+        //     case "1":
+        //         genderVal = "Female"
+        //         break;
+        //     case "2":
+        //         genderVal = "Male"
+        //         break;
+        //     case "3":
+        //         genderVal = "Other"
+        //         break;
+        //     case "4":
+        //         genderVal = "Prefer not to Answer"
+        //         break;
+        // };
+
+        let genderVal = document.getElementById("inputGender");
+        genderVal.value = genderEdit;
+
+        let maritalVal = document.getElementById("inputMarital");
+        maritalVal.value = maritalEdit;
+
+        let timeVal = document.getElementById("inputTime");
+        timeVal.value = timeEdit;
+
+        let dlVal = document.getElementById("inputDL");
+        dlVal.value = dlEdit;
+
+        let docsVal = document.getElementById("inputDocs");
+        docsVal.value = docsEdit;
+
+        // $("[name=gender]").value = genderEdit
+        // $("select").val("Male");
+        // $('select').val(maritalEdit);
+        // $('select').val(timeEdit);
+        // $('select').val(dlEdit);s
+        // $('select').val(docsEdit);
         $("#edit").click(function () {
+            // console.log($("[name=gender]").val())
             var updateEmployee = {
                 first_name: $("#inputFirstName").val().trim(),
                 last_name: $("#inputLastName").val().trim(),
@@ -188,7 +222,7 @@ $(document).ready(function () {
                 ssn: $("#inputssn").val().trim(),
                 dob: $("#inputdob").val().trim(),
                 marital: $("#inputMarital").val(),
-                gender: $("#inputGender").val(),
+                gender: $("[name=gender]").val(),
                 full_time: $("#inputTime").val(),
                 drivers_license: $("#inputDL").val(),
                 gov_docs: $("#inputDocs").val()
