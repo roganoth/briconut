@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="reset" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="http://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
@@ -30,21 +31,21 @@
   </nav>
   <form>
 
-
+      <label for="col">Search by</label>
+      <select class="custom-select mr-sm-2" id="col">
+          <option value="first_name">First Name</option>
+          <option value="last_name">Last Name</option>
+          <option value="position">Position</option>
+          <option value="hire_date">Hire Date</option>
+          <option value="email">Email</option>
+  
+  
+        </select>
     <div class="form-group">
       <input class="form-control" id="search-bar">
       <!-- <input class="form-control" id="col"> -->
-      <label for="col">Search by</label>
-      <select class="custom-select mr-sm-2" id="col">
-        <option selected>Choose...</option>
-        <option value="first_name">First Name</option>
-        <option value="last_name">Last Name</option>
-        <option value="position">Position</option>
-        <option value="hire_date">Hire Date</option>
-        <option value="email">Email</option>
-
-
-      </select>
+      
+      
     </div>
     <button type="submit" class="btn btn-primary" id="search">Search</button>
   </form><br>
