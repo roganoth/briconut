@@ -24,6 +24,7 @@ $(document).ready(function () {
             infoButton.attr("data-dl", emps[i].drivers_license);
             infoButton.attr("data-ssn", emps[i].ssn);
             infoButton.text("Get More Info");
+           
             console.log(infoButton);
 
             var nameString = $(`<li> ${emps[i].first_name} | ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | ${emps[i].email}  </li>`);
@@ -155,3 +156,5 @@ $(document).ready(function () {
         $("#modal").append("SSN: " + $(this).attr("data-ssn"));
     });
 })
+
+
