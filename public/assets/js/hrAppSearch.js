@@ -116,19 +116,19 @@ $(document).ready(function () {
         var marital;
         var docs;
         var dl;
-        if ($(this).attr("data-marital") === 0) {
+        if ($(this).attr("data-marital") == 0) {
             marital = "Single";
         }
         else {
             marital = "Married"
         };
-        if ($(this).attr("data-gov_docs") === 0) {
+        if ($(this).attr("data-gov_docs") == 0) {
             docs = "No";
         }
         else {
             docs = "Yes";
         };
-        if ($(this).attr("data-dl") === 0) {
+        if ($(this).attr("data-dl") == 0) {
             dl = "No";
         }
         else {
@@ -154,7 +154,6 @@ $(document).ready(function () {
         $("#editModal").modal("toggle");
         var name = $(this).attr("data-first_name") + " " + $(this).attr("data-last_name");
         var genderEdit = $(this).attr("data-gender");
-        console.log(genderEdit);
         var maritalEdit = $(this).attr("data-marital");
         var timeEdit = $(this).attr("data-time");
         var dlEdit = $(this).attr("data-dl");
@@ -203,15 +202,12 @@ $(document).ready(function () {
                 drivers_license: $("#inputDL").val(),
                 gov_docs: $("#inputDocs").val()
             }
-            console.log(updateEmployee);
-            console.log(id);
             $.ajax("/employees/" + id, {
                 type: "PUT",
                 data: JSON.stringify(updateEmployee),
                 dataType: "json",
                 contentType: "application/json"
             }).then(function () {
-                console.log("employee updated");
                 location.reload();
             });
         });
