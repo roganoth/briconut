@@ -7,9 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="reset" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="http://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="./assets/js/moment.js"></script>
   <script src="./assets/js/hrAppSearch.js"></script>
@@ -30,21 +31,21 @@
   </nav>
   <form>
 
-
+      <label for="col">Search by</label>
+      <select class="custom-select mr-sm-2" id="col">
+          <option value="first_name">First Name</option>
+          <option value="last_name">Last Name</option>
+          <option value="position">Position</option>
+          <option value="hire_date">Hire Date</option>
+          <option value="email">Email</option>
+  
+  
+        </select>
     <div class="form-group">
       <input class="form-control" id="search-bar">
       <!-- <input class="form-control" id="col"> -->
-      <label for="col">Search by</label>
-      <select class="custom-select mr-sm-2" id="col">
-        <option selected>Choose...</option>
-        <option value="first_name">First Name</option>
-        <option value="last_name">Last Name</option>
-        <option value="position">Position</option>
-        <option value="hire_date">Hire Date</option>
-        <option value="email">Email</option>
-
-
-      </select>
+      
+      
     </div>
     <button type="submit" class="btn btn-primary" id="search">Search</button>
   </form><br>
@@ -111,6 +112,70 @@
     </div>
   </div>
 
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editTitle"></h5>
+          <hr>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <!-- <div class="modal-body" id="editBody"> -->
+            <form>
+              <label>First Name</label>
+              <input type="text" id="inputFirstName"><br>
+              <label>Last Name</label>
+              <input type="text" id="inputLastName"><br>
+              <label>E-mail</label>
+              <input type="text" id="inputEmail"><br>
+              <label>DoB</label>
+              <input type="text" id="inputdob"><br>
+              <label>Phone</label>
+              <input type="text" id="inputPhone"><br>
+              <label>Hire Date</label>
+              <input type="text" id="hire_date"><br>
+              <label>Position</label>
+              <input type="text" id="inputposition"><br>
+              <label>SSN</label>
+              <input type="text" id="inputssn"><br>
+              <select name="marital" id="inputMarital">
+                <option selected>Choose...</option>
+                <option value=0>Single</option>
+                <option value=1>Married</option>
+              </select>
+              <select name="gender" id="inputGender">
+                <option >Choose...</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Other">Other</option>
+                <option value="Prefer not to Answer">Prefer not to Answer</option>
+              </select>
+              <select name="time" id="inputTime">
+                <option selected>Choose...</option>
+                <option value=1>Full-Time</option>
+                <option value=0>Part-Time</option>
+              </select>
+              <select name="docs" id="inputDocs">
+                <option selected>Choose...</option>
+                <option value=1>Yes</option>
+                <option value=0>No</option>
+              </select>
+              <select name="dl" id="inputDL">
+                <option selected>Choose...</option>
+                <option value=1>Yes</option>
+                <option value=0>No</option>
+              </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="edit">Save changes</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
 </body>
 
