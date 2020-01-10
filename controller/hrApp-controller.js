@@ -34,16 +34,18 @@ router.post("/message", function (req, res) {
     console.log("TEST")
     
     
-    const data = {
+    var data = {
     from: 'Excited User <me@samples.mailgun.org>',
-    to: 'juliannakar84@gmail.com',
+    to: "juliannakar84@gmail.com",
     subject: 'Hello',
     text: 'Testing some Mailgun awesomeness!'
     };
     
+
+    
     mailgun.messages().send(data, (error, body) => {
-    console.log(body);
-    console.log(error)
+    console.log(data);
+    // console.log(error)
     
     });
     });
