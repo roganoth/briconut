@@ -219,6 +219,15 @@ $(document).ready(function () {
 
     $(document).on("click", "#email", function (event) {
         var email = $("#email")[0].innerHTML
+        $("#emailModal").modal("toggle");
+        $("#modal").empty();
+        var text;
+        var subject;
+
+        $("#modalTitle").text("Create the email you would like to send:");
+        $("#modal").append("<b>Subject:</b> " + $(this).attr("data-phone"));
+        $("#modal").append("<br>");
+        $("#modal").append("<b>Text:</b> " + $(this).attr("data-phone"));
 
         console.log(email)
 
