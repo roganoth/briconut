@@ -116,7 +116,7 @@ $(document).ready(function () {
         var marital;
         var docs;
         var dl;
-        if ($(this).attr("data-marital") === 0) {
+        if ($(this).attr("data-marital") == 0) {
             marital = "Single";
         }
         else {
