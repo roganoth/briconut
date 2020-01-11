@@ -1,9 +1,30 @@
 
-
 body {
     background-image: url(../Images/purple.jpg);
     background-repeat: no-repeat;
     /* object-fit: cover; */
     
   }
+  
+.empInfo {
+    float: right;
+    margin: 5px;
+}
+
+ 
+.del {
+    float: right;
+    margin: 5px;
+}
+
+.editInfo {
+    float:  right;
+    margin: 5px;
+} 
+
+#employeeResult {
+    margin-right: 500px;
+   
+    
+}
 
