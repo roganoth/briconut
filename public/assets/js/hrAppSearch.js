@@ -45,7 +45,7 @@ $(document).ready(function () {
 
             //create delete button attach id
             var delButton = $("<button>");
-            delButton.addClass(".del");
+            delButton.addClass("del");
             delButton.addClass("btn btn-info btn-sm");
             delButton.addClass("glyphicon glyphicon-trash");
             delButton.attr("data-id", emps[i].id);
@@ -57,11 +57,11 @@ $(document).ready(function () {
 
             var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | <a href = ' ' target="_blank" id = 'email'>${emps[i].email} </a> </li><hr>`);
 
-            nameString.append(infoButton);
+            nameString.append(delButton);
             nameString.append(" ");
             nameString.append(editButton);
             nameString.append(" ");
-            nameString.append(delButton);
+            nameString.append(infoButton);
             emps_elem.append(nameString);
         };
     };
