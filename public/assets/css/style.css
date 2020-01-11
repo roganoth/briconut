@@ -23,8 +23,15 @@ body {
 } 
 
 #employeeResult {
-    margin-right: 500px;
-   
+    margin-right: 400px;
+    margin-left: 50px;
+}
+
+#search-bar {
+    width: 1000px;
     
 }
 
+form {
+    margin-left: 50px;
+}
