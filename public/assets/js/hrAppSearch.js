@@ -53,7 +53,7 @@ $(document).ready(function () {
             delButton.text("Delete Employee");
 
 
-            var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | <a href = ' ' data-email=' " + ${emps[i].email} + "' id = 'email'>${emps[i].email} </a> </li><hr>`);
+            var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | <a href='' data-email='${emps[i].email}' id ='email' data-target='#emailModal'> ${emps[i].email} </a> </li><hr>`);
 
             nameString.append(infoButton);
             nameString.append(editButton);
@@ -168,10 +168,10 @@ $(document).ready(function () {
         $("#inputLastName").attr("value", $(this).attr("data-last_name"));
         $("#inputEmail").attr("value", $(this).attr("data-email"));
         $("#inputPhone").attr("value", $(this).attr("data-phone"));
-        $("#hire_date").attr("value", hire_date.slice(0,10));
+        $("#hire_date").attr("value", hire_date.slice(0, 10));
         $("#inputposition").attr("value", $(this).attr("data-position"));
         $("#inputssn").attr("value", $(this).attr("data-ssn"));
-        $("#inputdob").attr("value", dob.slice(0,10));
+        $("#inputdob").attr("value", dob.slice(0, 10));
         let genderVal = document.getElementById("inputGender");
         genderVal.value = genderEdit;
 
@@ -216,41 +216,32 @@ $(document).ready(function () {
             });
         });
     });
-    var emailForm = document.querySelector("#email-form")
-    emailForm.addEventListener("submit", function (event) {
+
+    $(document).on("click", "#email", function (event) {
         event.preventDefault();
-        // var email = $("#email")[0].innerHTML;
-        var subject = emailForm["inputSubject"].value;
-        var text = emailForm ["inputText"].value;
+        var address = $(this).attr("data-email");
         $("#emailModal").modal("toggle");
-        // $("#modal").empty();
-        // $("#modalTitle").text("Create the email you would like to send:");
-        // $("#modal").append("<b>Subject:</b> <input type='text' id='inputSubject'>" );
-        // $("#modal").append("<br>");
-        // $("#modal").append("<b>Text:</b> <input type='text' id='inputText'>");
-
-        console.log(email)
-
- 
-
-        $(document).on("click", "sendemail", function (event) {
-            console.log($(this).attr("data-email"));
-            console.log($("#inputSubject").val());
+        console.log("woot");
+        $("#sendemail").click(function () {
             var emaildata = {
-            subject: $("#inputSubject").val().trim(),
-            text: $("#inputText").val().trim(),
-        } 
-        
-        console.log(emaildata);
-        $.ajax("/message", {
-            type: "POST",
-            data: JSON.stringify(emaildata),
-            dataType: "json",
-            contentType: "application/json"
-        }).then(function () {
-            console.log(data);
+                mailTarget: address,
+                subject: $("#inputSubject").val().trim(),
+                text: $("#inputText").val().trim(),
+            };
+            
+            console.log(emaildata);
+            $.ajax("/message", {
+                type: "POST",
+                data: JSON.stringify(emaildata),
+                contentType: "application/json"
+                //dataType: "json"
+            }).then(function () {
+                console.log("Hit controller");
+                $("#emailModal").modal("toggle");
+                $("#inputSubject").empty();
+                $("#inputText").empty();
+            });
         });
-    });
 
     });
 })

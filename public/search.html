@@ -54,12 +54,13 @@
     <ol id="employeeResult"></ol>
   </div>
 
+  <!-- EMAIL MODAL -->
   
   <div class="modal" tabindex="-1" role="dialog" id="emailModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalTitle"></h5>
+          <h5 class="modal-title" id="modalTitle">Create an email to send:</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -68,8 +69,7 @@
           <form id = "email-form">
             <label> Subject: </label>
             <input type="text" id="inputSubject"><br>
-            <label>Text: </label>
-            <input type="text" id="inputText"><br>
+            <textarea rows="8" cols="75" placeholder="Hi, I would like to set up a meeting with you. When are you available?" type="text" id="inputText"></textarea> <br> 
           </form>
         </div>
         <div class="modal-footer">
