@@ -37,8 +37,8 @@ router.post("/message", function (req, res) {
     var data = {
     from: 'Excited User <me@samples.mailgun.org>',
     to: "juliannakar84@gmail.com",
-    subject: 'Hello',
-    text: 'Testing some Mailgun awesomeness!'
+    subject: emaildata.subject,
+    text: emaildata.text
     };
     
 
