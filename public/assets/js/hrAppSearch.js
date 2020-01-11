@@ -26,6 +26,7 @@ $(document).ready(function () {
             var editButton = $("<button>");
             editButton.addClass("editInfo");
             editButton.addClass("btn btn-info btn-sm");
+            editButton.addClass("glyphicon glyphicon-pencil");
             editButton.attr("data-id", emps[i].id);
             editButton.attr("data-first_name", emps[i].first_name);
             editButton.attr("data-last_name", emps[i].last_name);
@@ -40,23 +41,26 @@ $(document).ready(function () {
             editButton.attr("data-email", emps[i].email);
             editButton.attr("data-position", emps[i].position);
             editButton.attr("data-time", emps[i].full_time);
-            editButton.text("Edit");
+            // editButton.text("Edit");
 
             //create delete button attach id
             var delButton = $("<button>");
             delButton.addClass(".del");
             delButton.addClass("btn btn-info btn-sm");
+            delButton.addClass("glyphicon glyphicon-trash");
             delButton.attr("data-id", emps[i].id);
             delButton.attr("data-first_name", emps[i].first_name);
             delButton.attr("data-last_name", emps[i].last_name);
             delButton.attr("id", "delete");
-            delButton.text("Delete Employee");
+            // delButton.text("Delete Employee");
 
 
             var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | <a href = ' ' target="_blank" id = 'email'>${emps[i].email} </a> </li><hr>`);
 
             nameString.append(infoButton);
+            nameString.append(" ");
             nameString.append(editButton);
+            nameString.append(" ");
             nameString.append(delButton);
             emps_elem.append(nameString);
         };
