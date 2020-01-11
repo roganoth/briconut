@@ -5,3 +5,33 @@ body {
     /* object-fit: cover; */
     
   }
+  
+.empInfo {
+    float: right;
+    margin: 5px;
+}
+
+ 
+.del {
+    float: right;
+    margin: 5px;
+}
+
+.editInfo {
+    float:  right;
+    margin: 5px;
+} 
+
+#employeeResult {
+    margin-right: 400px;
+    margin-left: 50px;
+}
+
+#search-bar {
+    width: 1000px;
+    
+}
+
+form {
+    margin-left: 50px;
+}

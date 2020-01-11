@@ -52,6 +52,7 @@
   <hr>
   <div id="display">
     <ol id="employeeResult"></ol>
+   
   </div>
 
   <!-- EMAIL MODAL -->
@@ -60,16 +61,16 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalTitle">Create an email to send:</h5>
+          <h5 class="modal-title" id="modalTitleEmail">Create an email:</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body" id="modal">
+        <div class="modal-body" id="emailModal">
           <form id = "email-form">
             <label> Subject: </label>
             <input type="text" id="inputSubject"><br>
-            <textarea rows="8" cols="75" placeholder="Hi, I would like to set up a meeting with you. When are you available?" type="text" id="inputText"></textarea> <br> 
+            <textarea rows="8" cols="60" placeholder="Hi, I would like to set up a meeting with you. When are you available?" type="text" id="inputText"></textarea> <br> 
           </form>
         </div>
         <div class="modal-footer">
@@ -147,11 +148,14 @@
               <input type="text" id="inputposition"><br>
               <label>SSN</label>
               <input type="text" id="inputssn"><br>
+              <label>Marital Status:</label>
               <select name="marital" id="inputMarital">
                 <option selected>Choose...</option>
                 <option value=0>Single</option>
                 <option value=1>Married</option>
               </select>
+              <br>
+              <label>Gender:</label>
               <select name="gender" id="inputGender">
                 <option >Choose...</option>
                 <option value="Female">Female</option>
@@ -159,16 +163,22 @@
                 <option value="Other">Other</option>
                 <option value="Prefer not to Answer">Prefer not to Answer</option>
               </select>
+              <br>
+              <label>Full-Time/Part-Time</label>
               <select name="time" id="inputTime">
                 <option selected>Choose...</option>
                 <option value=1>Full-Time</option>
                 <option value=0>Part-Time</option>
               </select>
+              <br>
+              <label>Government Documents Submitted:</label>
               <select name="docs" id="inputDocs">
                 <option selected>Choose...</option>
                 <option value=1>Yes</option>
                 <option value=0>No</option>
               </select>
+              <br>
+              <label>Driver's License Submitted:</label>
               <select name="dl" id="inputDL">
                 <option selected>Choose...</option>
                 <option value=1>Yes</option>

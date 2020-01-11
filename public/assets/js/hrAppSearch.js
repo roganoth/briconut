@@ -26,6 +26,7 @@ $(document).ready(function () {
             var editButton = $("<button>");
             editButton.addClass("editInfo");
             editButton.addClass("btn btn-info btn-sm");
+            editButton.addClass("glyphicon glyphicon-pencil");
             editButton.attr("data-id", emps[i].id);
             editButton.attr("data-first_name", emps[i].first_name);
             editButton.attr("data-last_name", emps[i].last_name);
@@ -40,24 +41,27 @@ $(document).ready(function () {
             editButton.attr("data-email", emps[i].email);
             editButton.attr("data-position", emps[i].position);
             editButton.attr("data-time", emps[i].full_time);
-            editButton.text("Edit");
+            // editButton.text("Edit");
 
             //create delete button attach id
             var delButton = $("<button>");
-            delButton.addClass(".del");
+            delButton.addClass("del");
             delButton.addClass("btn btn-info btn-sm");
+            delButton.addClass("glyphicon glyphicon-trash");
             delButton.attr("data-id", emps[i].id);
             delButton.attr("data-first_name", emps[i].first_name);
             delButton.attr("data-last_name", emps[i].last_name);
             delButton.attr("id", "delete");
-            delButton.text("Delete Employee");
+            // delButton.text("Delete Employee");
 
 
             var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | <a href='' data-email='${emps[i].email}' id ='email' data-target='#emailModal'> ${emps[i].email} </a> </li><hr>`);
 
-            nameString.append(infoButton);
-            nameString.append(editButton);
             nameString.append(delButton);
+            nameString.append(" ");
+            nameString.append(editButton);
+            nameString.append(" ");
+            nameString.append(infoButton);
             emps_elem.append(nameString);
         };
     };
@@ -116,19 +120,19 @@ $(document).ready(function () {
         var marital;
         var docs;
         var dl;
-        if ($(this).attr("data-marital") === 0) {
+        if ($(this).attr("data-marital") == 0) {
             marital = "Single";
         }
         else {
             marital = "Married"
         };
-        if ($(this).attr("data-gov_docs") === 0) {
+        if ($(this).attr("data-gov_docs") == 0) {
             docs = "No";
         }
         else {
             docs = "Yes";
         };
-        if ($(this).attr("data-dl") === 0) {
+        if ($(this).attr("data-dl") == 0) {
             dl = "No";
         }
         else {
@@ -154,7 +158,6 @@ $(document).ready(function () {
         $("#editModal").modal("toggle");
         var name = $(this).attr("data-first_name") + " " + $(this).attr("data-last_name");
         var genderEdit = $(this).attr("data-gender");
-        console.log(genderEdit);
         var maritalEdit = $(this).attr("data-marital");
         var timeEdit = $(this).attr("data-time");
         var dlEdit = $(this).attr("data-dl");
@@ -203,15 +206,12 @@ $(document).ready(function () {
                 drivers_license: $("#inputDL").val(),
                 gov_docs: $("#inputDocs").val()
             }
-            console.log(updateEmployee);
-            console.log(id);
             $.ajax("/employees/" + id, {
                 type: "PUT",
                 data: JSON.stringify(updateEmployee),
                 dataType: "json",
                 contentType: "application/json"
             }).then(function () {
-                console.log("employee updated");
                 location.reload();
             });
         });
@@ -237,9 +237,8 @@ $(document).ready(function () {
                 //dataType: "json"
             }).then(function () {
                 console.log("Hit controller");
-                $("#emailModal").modal("toggle");
-                $("#inputSubject").empty();
-                $("#inputText").empty();
+                // $("#emailModal").modal("toggle");
+                location.reload();
             });
         });
 
