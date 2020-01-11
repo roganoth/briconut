@@ -7,7 +7,7 @@ var keys = require("../config/keys")
 // var API_KEY = keys.keys.API_KEY;
 // var DOMAIN = keys.keys.DOMAIN;
 // console.log(keys);
-var mailgun = require('mailgun-js')({ apiKey: keys.keys.API_KEY, domain: keys.keys.DOMAIN });
+var mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN });
 
 router.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "public/index.html"));
