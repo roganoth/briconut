@@ -55,7 +55,7 @@ $(document).ready(function () {
             // delButton.text("Delete Employee");
 
 
-            var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | <a href = ' ' target="_blank" id = 'email'>${emps[i].email} </a> </li><hr>`);
+            var nameString = $(`<li> ${emps[i].first_name} ${emps[i].last_name} | ${emps[i].position} | ${moment(emps[i].hire_date).format('LL')} | <a href='' data-email='${emps[i].email}' id ='email' data-target='#emailModal'> ${emps[i].email} </a> </li><hr>`);
 
             nameString.append(delButton);
             nameString.append(" ");
@@ -171,10 +171,10 @@ $(document).ready(function () {
         $("#inputLastName").attr("value", $(this).attr("data-last_name"));
         $("#inputEmail").attr("value", $(this).attr("data-email"));
         $("#inputPhone").attr("value", $(this).attr("data-phone"));
-        $("#hire_date").attr("value", hire_date.slice(0,10));
+        $("#hire_date").attr("value", hire_date.slice(0, 10));
         $("#inputposition").attr("value", $(this).attr("data-position"));
         $("#inputssn").attr("value", $(this).attr("data-ssn"));
-        $("#inputdob").attr("value", dob.slice(0,10));
+        $("#inputdob").attr("value", dob.slice(0, 10));
         let genderVal = document.getElementById("inputGender");
         genderVal.value = genderEdit;
 
@@ -218,25 +218,29 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "#email", function (event) {
-        var email = $("#email")[0].innerHTML
+        event.preventDefault();
+        var address = $(this).attr("data-email");
         $("#emailModal").modal("toggle");
-        $("#emailModal").empty();
-        var text;
-        var subject;
-
-        $("#modalTitleEmail").text("Create the email you would like to send:");
-        $("#emailModal").append("<b>Subject:</b> " + $(this).attr("data-phone"));
-        $("#emailModal").append("<br>");
-        $("#emailModal").append("<b>Text:</b> " + $(this).attr("data-phone"));
-
-        console.log(email)
-
-        $.ajax("/message", {
-            type: "POST"
-        }).then(function (data) {
-            console.log("test")
+        console.log("woot");
+        $("#sendemail").click(function () {
+            var emaildata = {
+                mailTarget: address,
+                subject: $("#inputSubject").val().trim(),
+                text: $("#inputText").val().trim(),
+            };
+            
+            console.log(emaildata);
+            $.ajax("/message", {
+                type: "POST",
+                data: JSON.stringify(emaildata),
+                contentType: "application/json"
+                //dataType: "json"
+            }).then(function () {
+                console.log("Hit controller");
+                // $("#emailModal").modal("toggle");
+                location.reload();
+            });
         });
-
 
     });
 })

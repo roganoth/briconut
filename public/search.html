@@ -55,19 +55,26 @@
    
   </div>
 
+  <!-- EMAIL MODAL -->
   
   <div class="modal" tabindex="-1" role="dialog" id="emailModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalTitleEmail"></h5>
+          <h5 class="modal-title" id="modalTitleEmail">Create an email:</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body" id="emailModal">
+          <form id = "email-form">
+            <label> Subject: </label>
+            <input type="text" id="inputSubject"><br>
+            <textarea rows="8" cols="60" placeholder="Hi, I would like to set up a meeting with you. When are you available?" type="text" id="inputText"></textarea> <br> 
+          </form>
         </div>
         <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="sendemail">Send Email</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>

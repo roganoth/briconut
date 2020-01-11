@@ -7,7 +7,7 @@ var keys = require("../config/keys")
 // var API_KEY = keys.keys.API_KEY;
 // var DOMAIN = keys.keys.DOMAIN;
 // console.log(keys);
-var mailgun = require('mailgun-js')({apiKey: keys.keys.API_KEY, domain: keys.keys.DOMAIN});
+var mailgun = require('mailgun-js')({ apiKey: keys.keys.API_KEY, domain: keys.keys.DOMAIN });
 
 router.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "public/index.html"));
@@ -31,25 +31,21 @@ router.post("/employees", function (req, res) {
 });
 
 router.post("/message", function (req, res) {
-    console.log("TEST")
-    
-    
     var data = {
-    from: 'Excited User <me@samples.mailgun.org>',
-    to: "juliannakar84@gmail.com",
-    subject: 'Hello',
-    text: 'Testing some Mailgun awesomeness!'
+        from: 'Excited User <me@samples.mailgun.org>',
+        to: req.body.mailTarget,
+        subject: req.body.subject,
+        text: req.body.text
     };
-    
 
-    
+
+
     mailgun.messages().send(data, (error, body) => {
-    console.log(data);
-    // console.log(error)
-    
+        console.log(data);
+        return res.status(200).end();
     });
-    });
-    
+});
+
 
 router.put("/employees/:id", function (req, res) {
     var condition = "id = " + req.params.id;
